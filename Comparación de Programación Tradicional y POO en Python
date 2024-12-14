@@ -1,0 +1,61 @@
+# Programación Tradicional
+
+def ingresar_temperaturas():
+    """Función para ingresar las temperaturas diarias."""
+    temperaturas = []
+    for i in range(7):
+        while True:
+            try:
+                temp = float(input(f"Ingresa la temperatura del día {i + 1}: "))
+                temperaturas.append(temp)
+                break
+            except ValueError:
+                print("Por favor, ingresa un número válido.")
+    return temperaturas
+
+def calcular_promedio(temperaturas):
+    """Función para calcular el promedio de las temperaturas."""
+    return sum(temperaturas) / len(temperaturas)
+
+def main_tradicional():
+    """Función principal para la implementación tradicional."""
+    print("\n--- Programación Tradicional ---")
+    temperaturas = ingresar_temperaturas()
+    promedio = calcular_promedio(temperaturas)
+    print(f"El promedio semanal de las temperaturas es: {promedio:.2f} °C")
+
+# Llamada al programa tradicional
+main_tradicional()
+
+# Programación Orientada a Objetos (POO)
+
+class ClimaSemanal:
+    """Clase que representa la información del clima semanal."""
+
+    def __init__(self):
+        self.temperaturas = []
+
+    def ingresar_temperaturas(self):
+        """Método para ingresar las temperaturas diarias."""
+        for i in range(7):
+            while True:
+                try:
+                    temp = float(input(f"Ingresa la temperatura del día {i + 1}: "))
+                    self.temperaturas.append(temp)
+                    break
+                except ValueError:
+                    print("Por favor, ingresa un número válido.")
+
+    def calcular_promedio(self):
+        """Método para calcular el promedio de las temperaturas."""
+        if not self.temperaturas:
+            return 0
+        return sum(self.temperaturas) / len(self.temperaturas)
+
+def main_poo():
+    """Función principal para la implementación en POO."""
+    print("\n--- Programación Orientada a Objetos ---")
+    clima = ClimaSemanal()
+    clima.ingresar_temperaturas()
+    promedio = clima.calcular_promedio()
+    print(f"El promedio semanal de las temperaturas es: {promedio:.2f} °C")
